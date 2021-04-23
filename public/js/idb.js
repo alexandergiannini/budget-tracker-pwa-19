@@ -40,6 +40,8 @@ function saveRecord(record) {
   
     // add record to your store with add method
     budgetObjectStore.add(record);
+
+    alert('Sorry there is no internet connection, but your transactions have been completed.')
   }
 
 
