@@ -16,10 +16,6 @@ const FILES_TO_CACHE = [
   '/icons/icon-512x512.png',
 ];
 
-// Install the service worker
-// YOUR CODE HERE
-
-
 self.addEventListener('install', function(evt) {
     evt.waitUntil(
         caches.open(CACHE_NAME).then(cache => {
@@ -29,10 +25,6 @@ self.addEventListener('install', function(evt) {
     )
     self.skipWaiting();
 })
-
-
-
-
 
 // Activate the service worker and remove old data from the cache
 // YOUR CODE HERE
@@ -53,9 +45,6 @@ self.addEventListener('activate', function (evt) {
     self.clients.claim()
 })
 
-
-
-
 // Intercept fetch requests
 self.addEventListener('fetch', function(evt) {
 
@@ -71,14 +60,8 @@ self.addEventListener('fetch', function(evt) {
                         cache.put(evt.request.url,
                             response.clone())
                     }
-
                     return response
-
-
-
                 })
-
-
                 .catch(err => {
                     return cache.match(evt.request)
                 })
@@ -87,8 +70,6 @@ self.addEventListener('fetch', function(evt) {
         )
         return
     }
-
-
 
     evt.respondWith(
         fetch(evt.request).catch(function() {
@@ -102,10 +83,4 @@ self.addEventListener('fetch', function(evt) {
             })
         })
     )
-
-
-
-
-
-
 })
